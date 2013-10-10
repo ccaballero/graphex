@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+canvas {
+    margin-bottom: -5px;
+}
+
+nav {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    opacity: 0.10;
+}
+
+nav:hover {
+    opacity: 0.80;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    font-size: 11px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0em 0.1em;
+}
+
+nav ul li a:hover {
+    color: #ff6600;
+}
