@@ -1,19 +1,49 @@
-var height=function(){
-if(window.innerHeight){return window.innerHeight}
-else{return document.documentElement.clientHeight}
-}
-var width=function(){
-if(window.innerWidth){return window.innerWidth}
-else{return document.documentElement.clientWidth}}
+var Screen=new(function(){
+    this.height=function(){
+        if(window.innerHeight){return window.innerHeight}
+        else{return document.documentElement.clientHeight}}
+    this.width=function(){
+        if(window.innerWidth){return window.innerWidth}
+        else{return document.documentElement.clientWidth}}
+    this.render=function(){
+        canvas=document.getElementById('cartesian')
+        context=canvas.getContext('2d')
+        width=canvas.width
+        height=canvas.height
+        scale=0.0085
+        context.fillStyle="#ffffff"
+        context.fillRect(0,0,width,height)
+        data=context.getImageData(0,0,width,height)
+        pixels=data.data
+        for(var y=0;y<height;y++){
+            for(var x=0;x<width;x++){
+                // translation
+                _x=x-(width/2.0)
+                _y=-1*(y-(height/2.0))
+                // scalation
+                _x=_x*scale
+                _y=_y*scale
+                value=Function.mandelbrot(_x,_y)
+                _value=(value*255)/Function.max
+                index=(y*width+x)*4
+                pixels[index]=pixels[index+1]=pixels[index+2]=_value
+            }
+        }
+        context.putImageData(data,0,0)
+        context.fillRect(0,0,0,0)
+        context.fillStyle='#ffffff'
+        context.fillRect(0,height/2.0,width,1)
+        context.fillRect(width/2.0,0,1,height)
+    }
+})()
 
 var resize=function(){
     element=document.getElementById('cartesian')
-    element.width=width()
-    element.height=height()
+    element.width=Screen.width()
+    element.height=Screen.height()
     element.style.width=element.width+'px'
     element.style.height=element.height+'px'
-    
-    render()
+    Screen.render()
 }
 
 var Function=new(function(){
@@ -65,46 +95,6 @@ var Function=new(function(){
     }
 })()
 
-var render=function(){
-    canvas=document.getElementById('cartesian')
-    context=canvas.getContext('2d')
-
-    width=canvas.width
-    height=canvas.height
-    scale=0.0085
-
-    context.fillStyle="#ffffff"
-    context.fillRect(0,0,width,height)
-
-    data=context.getImageData(0,0,width,height)
-    pixels=data.data
-
-    for(var y=0;y<height;y++){
-        for(var x=0;x<width;x++){
-            // translation
-            _x=x-(width/2.0)
-            _y=-1*(y-(height/2.0))
-
-            // scalation
-            _x=_x*scale
-            _y=_y*scale
-
-            value=Function.mandelbrot(_x,_y)
-            _value=(value*255)/Function.max
-
-            index=(y*width+x)*4
-            pixels[index]=pixels[index+1]=pixels[index+2]=_value
-        }
-    }
-
-    context.putImageData(data,0,0)
-    context.fillRect(0,0,0,0)
-
-    context.fillStyle='#ffffff'
-    context.fillRect(0,height/2.0,width,1)
-    context.fillRect(width/2.0,0,1,height)    
-}
-
 $(window).resize(resize)
 $(document).ready(resize)
-$(document).ready(render)
+$(document).ready(Screen.render)
