@@ -1,19 +1,22 @@
 var Viewport=new(function(){
     this.X = 0
     this.Y = 0
-    this.scale=0.05
+    this.scale=-500
 
     this.right=function(){this.X+=20;Screen.render()}
     this.left=function(){this.X-=20;Screen.render()}
     this.up=function(){this.Y+=20;Screen.render()}
     this.down=function(){this.Y-=20;Screen.render()}
 
-    this.zoomin=function(){this.scale-=0.001;Screen.render()}
-    this.zoomout=function(){this.scale+=0.001;Screen.render()}
+    this.zoomin=function(){this.scale-=1;Screen.render()}
+    this.zoomout=function(){this.scale+=1;Screen.render()}
 
-    this.error = 0.5
-    this.zoom=function(){return}
-    this.stroke=function(){return 0.001}
+    this.stroke=function(){
+        return this.zoom()/2
+    }
+    this.zoom=function(){
+        return Math.pow(1.01,this.scale)
+    }
 })()
 
 var Screen=new(function(){
@@ -38,10 +41,10 @@ var Screen=new(function(){
                 _x=x-(width/2.0)+Viewport.X
                 _y=-1*(y-(height/2.0))+Viewport.Y
                 // scalation
-                _x=_x*Viewport.scale
-                _y=_y*Viewport.scale
+                _x=_x*Viewport.zoom()
+                _y=_y*Viewport.zoom()
                 // renderization
-                value=Function.parabolic(_x,_y)
+                value=Function.sin(_x,_y)
                 _value=(value*255)/Function.max
                 index=(y*width+x)*4
                 pixels[index]=pixels[index+1]=pixels[index+2]=_value
