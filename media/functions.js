@@ -1,5 +1,5 @@
 var Function=new(function(){
-    this.max=32
+    this.max=1
     this.rect=function(x,y){
         diff1=Math.abs(y-1)
         diff2=Math.abs(x-1)
@@ -41,20 +41,5 @@ var Function=new(function(){
         diff=Math.abs((x*x+y*y)-2)
         if(Viewport.stroke()>diff){return this.max}
         return 0
-    }
-    this.mandelbrot=function(i,j){
-        value=0
-        x=0
-        y=0
-        xx=0
-        yy=0
-        while((value<this.max)&&((xx+yy)<4.0)){
-            y=((x+x)*y)+j
-            x=(xx-yy)+i
-            yy=y*y
-            xx=x*x
-            value++
-        }
-        return value
     }
 })()

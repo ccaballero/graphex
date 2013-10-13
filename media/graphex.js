@@ -55,8 +55,8 @@ var Screen=new(function(){
                 _x=_x*Viewport.zoom()
                 _y=_y*Viewport.zoom()
                 // renderization
-                value=Function.mandelbrot(_x,_y)
-                _value=(value*255)/Function.max
+                value=Fractal.mandelbrot(_x,_y)
+                _value=(value*255)/Fractal.max
                 index=(y*width+x)*4
                 pixels[index]=pixels[index+1]=pixels[index+2]=_value
             }
