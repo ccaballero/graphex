@@ -10,10 +10,24 @@ canvas {
 }
 
 nav {
+    opacity: 0.25;
+}
+
+header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin-top: 0.3em;
+}
+
+header nav {
+    display: block;
+}
+
+footer nav {
     position: absolute;
     bottom: 0px;
     right: 0px;
-    opacity: 0.10;
 }
 
 nav:hover {
@@ -22,20 +36,24 @@ nav:hover {
 
 nav ul {
     list-style: none;
+    padding-left: 0.25em;
+    float: left;
 }
 
 nav ul li {
     float: left;
 }
 
-nav ul li a {
+nav ul li * {
+    float: left;
+    font-family: Century Gothic, Apple Gothic, sans-serif;
     font-size: 11px;
     color: #ffffff;
     text-decoration: none;
-    padding: 0em 0.1em;
+    padding: 0em 0.15em;
     cursor: pointer;
 }
 
-nav ul li a:hover {
+nav ul li *:hover {
     color: #ff6600;
 }

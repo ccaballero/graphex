@@ -1,21 +1,32 @@
+// http://www.mediacollege.com/internet/javascript/number/round.html
+function roundNumber(number,decimals){
+    var newnumber=new Number(number+'').toFixed(parseInt(decimals))
+    return parseFloat(newnumber)
+}
+
 var Viewport=new(function(){
     this.X = 0
     this.Y = 0
-    this.scale=-500
+    this.scale=0
 
-    this.right=function(){this.X+=20;Screen.render()}
-    this.left=function(){this.X-=20;Screen.render()}
-    this.up=function(){this.Y+=20;Screen.render()}
-    this.down=function(){this.Y-=20;Screen.render()}
+    this.right=function(){this.X+=20;this.repaint()}
+    this.left=function(){this.X-=20;this.repaint()}
+    this.up=function(){this.Y+=20;this.repaint()}
+    this.down=function(){this.Y-=20;this.repaint()}
 
-    this.zoomin=function(){this.scale-=1;Screen.render()}
-    this.zoomout=function(){this.scale+=1;Screen.render()}
+    this.zoomin=function(){this.scale-=0.1;this.repaint()}
+    this.zoomout=function(){this.scale+=0.1;this.repaint()}
 
     this.stroke=function(){
         return this.zoom()/2
     }
     this.zoom=function(){
-        return Math.pow(1.01,this.scale)
+        return Math.pow(Math.E,this.scale-3.5)/Math.E
+    }
+    
+    this.repaint=function(){
+        $('#scale').text(roundNumber(this.scale,2))
+        Screen.render()
     }
 })()
 
@@ -44,7 +55,7 @@ var Screen=new(function(){
                 _x=_x*Viewport.zoom()
                 _y=_y*Viewport.zoom()
                 // renderization
-                value=Function.sin(_x,_y)
+                value=Function.mandelbrot(_x,_y)
                 _value=(value*255)/Function.max
                 index=(y*width+x)*4
                 pixels[index]=pixels[index+1]=pixels[index+2]=_value
@@ -67,65 +78,6 @@ var resize=function(){
     element.style.height=element.height+'px'
     Screen.render()
 }
-
-var Function=new(function(){
-    this.max=32
-    this.identity=function(x,y){
-        diff=Math.abs(y-x)
-        if(Viewport.error>diff){return this.max}
-        return 0
-    }
-    this.parabolic=function(x,y){
-        diff=Math.abs(y-(x*x))
-        if(Viewport.stroke()>diff){return this.max}
-        return 0
-    }
-    this.sin=function(x,y){
-        diff=Math.abs(y-Math.sin(x))
-        if(Viewport.error>diff){return this.max}
-        return 0
-    }
-    this.tan=function(x,y){
-        diff=Math.abs(y-Math.tan(x))
-        if(Viewport.error>diff){return this.max}
-        return 0
-    }
-    this.log=function(x,y){
-        diff=Math.abs(y-Math.log(x))
-        if(Viewport.error>diff){return this.max}
-        return 0
-    }
-    this.exp=function(x,y){
-        diff=Math.abs(y-Math.exp(x))
-        if(Viewport.error>diff){return this.max}
-        return 0
-    }
-    this.log2=function(x,y){
-        diff=Math.abs(y-Math.log(x))
-        if(Viewport.error>diff){return this.max}
-        return 0
-    }
-    this.circle=function(x,y){
-        diff=Math.abs((x*x+y*y)-2)
-        if(Viewport.error>diff){return this.max}
-        return 0
-    }
-    this.mandelbrot=function(i,j){
-        value=0
-        x=0
-        y=0
-        xx=0
-        yy=0
-        while((value<this.max)&&((xx+yy)<4.0)){
-            y=((x+x)*y)+j
-            x=(xx-yy)+i
-            yy=y*y
-            xx=x*x
-            value++
-        }
-        return value
-    }
-})()
 
 $(window).resize(resize)
 $(document).ready(resize)

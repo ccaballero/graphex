@@ -4,20 +4,34 @@
         <meta charset="utf-8" />
         <link rel="stylesheet" href="media/graphex.css">
         <script src="media/jquery-1.9.0.min.js"></script>
+        <script src="media/functions.js"></script>
         <script src="media/graphex.js"></script>
     </head>
     <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a class="top">(top)</a></li>
+                    <li><a class="bottom">(bottom)</a></li>
+                    <li><a class="left">(left)</a></li>
+                    <li><a class="right">(right)</a></li>
+                    <li><a class="zoomin">(zoom+)</a></li>
+                    <li><a class="zoomout">(zoom-)</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <ul>
+                    <li><span>scale: </span><span id="scale">0</span></li>
+                </ul>
+            </nav>
+        </header>
         <canvas id="cartesian"></canvas>
-        <nav>
-            <ul>
-                <li><a class="top">[top]</a></li>
-                <li><a class="bottom">[bottom]</a></li>
-                <li><a class="left">[left]</a></li>
-                <li><a class="right">[right]</a></li>
-                <li><a class="zoomin">[zoom+]</a></li>
-                <li><a class="zoomout">[zoom-]</a></li>
-                <li><a href="https://github.com/ccaballero/graphex">[source]</a></li>
-            </ul>
-        </nav>
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="https://github.com/ccaballero/graphex">{source}</a></li>
+                </ul>
+            </nav>
+        </footer>
     </body>
 </html>
