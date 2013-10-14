@@ -23,7 +23,7 @@ var Viewport=new(function(){
     this.zoom=function(){
         return Math.pow(Math.E,this.scale-3.5)/Math.E
     }
-    
+
     this.repaint=function(){
         $('#scale').text(roundNumber(this.scale,2))
         Screen.render()
@@ -31,6 +31,13 @@ var Viewport=new(function(){
 })()
 
 var Screen=new(function(){
+    this.canvas=null
+    this.getCanvas=function(){
+        if(!this.canvas){
+            this.canvas=document.getElementById('cartesian')
+        }
+        return this.canvas
+    }
     this.height=function(){
         if(window.innerHeight){return window.innerHeight}
         else{return document.documentElement.clientHeight}}
@@ -38,22 +45,22 @@ var Screen=new(function(){
         if(window.innerWidth){return window.innerWidth}
         else{return document.documentElement.clientWidth}}
     this.render=function(){
-        canvas=document.getElementById('cartesian')
-        context=canvas.getContext('2d')
-        width=canvas.width
-        height=canvas.height
+        context=this.getCanvas().getContext('2d')
+        width=this.getCanvas().width
+        height=this.getCanvas().height
         context.fillStyle="#ffffff"
         context.fillRect(0,0,width,height)
         data=context.getImageData(0,0,width,height)
         pixels=data.data
+        zoom=Viewport.zoom()
         for(var y=0;y<height;y++){
             for(var x=0;x<width;x++){
-                // translation
+                // translation and scalation
                 _x=x-(width/2.0)+Viewport.X
                 _y=-1*(y-(height/2.0))+Viewport.Y
                 // scalation
-                _x=_x*Viewport.zoom()
-                _y=_y*Viewport.zoom()
+                _x=_x*zoom
+                _y=_y*zoom
                 // renderization
                 value=Fractal.mandelbrot(_x,_y)
                 _value=(value*255)/Fractal.max
@@ -101,4 +108,27 @@ $(document).ready(function(){
             case 40:Viewport.down();break
         }
     },true)
+
+    // http://miloq.blogspot.com/2011/05/coordinates-mouse-click-canvas.html
+    window.addEventListener('mousedown',function(event){
+        x=new Number()
+        y=new Number()
+        canvas=Screen.getCanvas()
+        if(event.x!=undefined&&event.y!=undefined){
+            x=event.x
+            y=event.y
+        }else{
+            x=event.clientX+document.body.scrollLeft+document.documentElement.scrollLeft
+            y=event.clientY+document.body.scrollTop+document.documentElement.scrollTop
+        }
+        x-=canvas.offsetLeft
+        y-=canvas.offsetTop
+//        console.log("x: " + x + "  y: " + y)
+        Viewport.X=x
+        Viewport.Y=y
+        Viewport.repaint()
+    },false)
 })
+
+
+

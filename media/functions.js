@@ -1,5 +1,5 @@
 var Function=new(function(){
-    this.max=1
+    this.max=32
     this.rect=function(x,y){
         diff1=Math.abs(y-1)
         diff2=Math.abs(x-1)
