@@ -57,3 +57,20 @@ nav ul li * {
 nav ul li *:hover {
     color: #ff6600;
 }
+
+#show {
+    position: absolute;
+    bottom: 0px;
+    right: 4px;
+    font-family: Century Gothic, Apple Gothic, sans-serif;
+    font-size: 11px;
+    color: #ffffff;
+}
+
+#show.hide { display: none; }
+#show.visible { display: block; }
+
+#show a {
+    cursor: pointer;
+    color: inherit;
+}
