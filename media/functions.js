@@ -22,6 +22,11 @@ var Function=new(function(){
         if(Viewport.stroke()>diff){return this.max}
         return 0
     }
+    this.cos=function(x,y){
+        diff=Math.abs(y-Math.cos(x))
+        if(Viewport.stroke()>diff){return this.max}
+        return 0
+    }
     this.tan=function(x,y){
         diff=Math.abs(y-Math.tan(x))
         if(Viewport.stroke()>diff){return this.max}

@@ -9,6 +9,10 @@ canvas {
     cursor: crosshair;
 }
 
+a {
+    cursor: pointer;    
+}
+
 nav {
     opacity: 0.25;
 }
@@ -51,7 +55,6 @@ nav ul li * {
     color: #ffffff;
     text-decoration: none;
     padding: 0em 0.15em;
-    cursor: pointer;
 }
 
 nav ul li *:hover {
@@ -67,10 +70,62 @@ nav ul li *:hover {
     color: #ffffff;
 }
 
-#show.hide { display: none; }
-#show.visible { display: block; }
+.hidden {
+    display: none;
+}
 
 #show a {
-    cursor: pointer;
     color: inherit;
+}
+
+#menu {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #ffffff;
+    padding: 10px;
+    overflow: auto;
+}
+
+#menu .close {
+    display: block;
+    text-align: right;
+    font-size: 11px;
+    padding-right: 10px;
+}
+
+#menu ul {
+    list-style: none;
+}
+
+#menu ul li {
+    float: left;
+}
+
+#menu ul li a {
+    float: left;
+    font-family: Century Gothic, Apple Gothic, sans-serif;
+    font-size: 11px;
+    padding: 0.25em 1.0em;
+    width: 16.0em;
+    text-decoration: none;
+    color: #606060;
+}
+
+#menu ul li a:hover {
+    background-color: #e0e0e0;
+}
+
+#menu h1 {
+    font-size: 14px;
+    color: #ff6600;
+    margin: 0.75em 0em;
+}
+
+.clear {
+    clear: both;
 }

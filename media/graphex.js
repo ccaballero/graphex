@@ -33,6 +33,7 @@ var Viewport=new(function(){
 
 var Screen=new(function(){
     this.canvas=null
+    this.index='mandelbrot'
     this.getCanvas=function(){
         if(!this.canvas){
             this.canvas=document.getElementById('cartesian')
@@ -70,8 +71,8 @@ var Screen=new(function(){
                 _x=_x*zoom
                 _y=_y*zoom
                 // renderization
-                value=Function.sin(_x,_y)
-                _value=(value*255)/Function.max
+                value=Fractal.mandelbrot(_x,_y)
+                _value=(value*255)/Fractal.max
                 index=(y*width+x)*4
                 pixels[index]=pixels[index+1]=pixels[index+2]=_value
             }
@@ -113,13 +114,21 @@ $(document).ready(function(){
         return false
     })
     $('.show').click(function(){
-        $('#show').removeClass().addClass('hide')
+        $('#show').removeClass().addClass('hidden')
         $('header').show('slow')
         $('footer').show('slow')
         return false
     })
     $('.menu').click(function(){
-        
+        $('#menu').removeClass().addClass('visible')
+    })
+    $('.close').click(function(){
+        $('#menu').removeClass().addClass('hidden')
+    })
+    
+    $('#menu ul li a').click(function(){
+        type=$(this).attr('name')
+        console.log(type)
     })
 
     window.addEventListener('keydown',function(event){
