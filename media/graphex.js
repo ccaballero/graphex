@@ -8,6 +8,7 @@ var Viewport=new(function(){
     this.X = 0
     this.Y = 0
     this.scale=0
+    this.axis=true
 
     this.right=function(){this.X+=20}
     this.left=function(){this.X-=20}
@@ -33,7 +34,7 @@ var Viewport=new(function(){
 
 var Screen=new(function(){
     this.canvas=null
-    this.index='mandelbrot'
+    this.fnct='empty'
     this.getCanvas=function(){
         if(!this.canvas){
             this.canvas=document.getElementById('cartesian')
@@ -71,18 +72,20 @@ var Screen=new(function(){
                 _x=_x*zoom
                 _y=_y*zoom
                 // renderization
-                value=Fractal.mandelbrot(_x,_y)
-                _value=(value*255)/Fractal.max
+                value=Function[this.fnct](_x,_y)
+                _value=(value*255)/Function.max
                 index=(y*width+x)*4
                 pixels[index]=pixels[index+1]=pixels[index+2]=_value
             }
         }
         context.putImageData(data,0,0)
         context.fillRect(0,0,0,0)
-        // cartesian axes
-        context.fillStyle='#cccccc'
-        context.fillRect(0,height/2.0+Viewport.Y,width,1) // X
-        context.fillRect(width/2.0-Viewport.X,0,1,height) // Y
+        if(Viewport.axis){
+            // cartesian axes
+            context.fillStyle='#cccccc'
+            context.fillRect(0,height/2.0+Viewport.Y,width,1) // X
+            context.fillRect(width/2.0-Viewport.X,0,1,height) // Y
+        }
     }
 })()
 
@@ -99,6 +102,7 @@ $(window).resize(resize)
 $(document).ready(resize)
 $(document).ready(function(){
     Screen.render()
+    
     $('.top').click(function(){Viewport.up();Viewport.repaint()})
     $('.bottom').click(function(){Viewport.down();Viewport.repaint()})
     $('.right').click(function(){Viewport.right();Viewport.repaint()})
@@ -108,12 +112,14 @@ $(document).ready(function(){
     $('.zoomout').click(function(){Viewport.zoomout();Viewport.label();Viewport.repaint()})
 
     $('.hide').click(function(){
+        Viewport.axis=false
         $('header').hide('slow')
         $('footer').hide('slow')
         $('#show').removeClass().addClass('visible')
         return false
     })
     $('.show').click(function(){
+        Viewport.axis=true
         $('#show').removeClass().addClass('hidden')
         $('header').show('slow')
         $('footer').show('slow')
@@ -128,7 +134,9 @@ $(document).ready(function(){
     
     $('#menu ul li a').click(function(){
         type=$(this).attr('name')
-        console.log(type)
+        Screen.fnct=type
+        $('#menu').removeClass().addClass('hidden')
+        Viewport.repaint()
     })
 
     window.addEventListener('keydown',function(event){

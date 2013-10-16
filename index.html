@@ -7,7 +7,6 @@
         <!-- Based on:
              http://www.nihilogic.dk/labs/javascript_canvas_fractals/ -->
         <script src="media/functions.js"></script>
-        <script src="media/fractals.js"></script>
         <script src="media/graphex.js"></script>
     </head>
     <body>
@@ -28,31 +27,37 @@
                 </ul>
             </nav>
         </header>
-        <canvas id="cartesian"></canvas>
-        <div id="show" class="hidden"><a class="show">#</a></div>
-        <div id="menu" class="hidden">
-            <div id="close"><a class="close">X</a></div>
-            <h1>Funciones</h1>
-            <ul>
-                <li><a name="rect">Rectangular</a></li>
-                <li><a name="identity">Identidad</a></li>
-                <li><a name="parabolic">Parabolica</a></li>
-                <li><a name="sin">Seno</a></li>
-                <li><a name="cos">Coseno</a></li>
-                <li><a name="tan">Tangente</a></li>
-                <li><a name="log">Logaritmo</a></li>
-                <li><a name="exp">Exponencial</a></li>
-                <li><a name="circle">Circunferencia</a></li>
-            </ul>
-            <div class="clear"></div>
-            <h1>Fractales</h1>
-            <ul>
-                <li><a name="mandelbrot">Mandelbrot (Z^2+C)</a></li>
-                <li><a name="mandelbrot3">Mandelbrot (Z^3+C)</a></li>
-                <li><a name="mandelbrot4">Mandelbrot (Z^4+C)</a></li>
-            </ul>
-            <div class="clear"></div>
-        </div>
+        <section>
+            <h1 class="label"></h1>
+            <canvas id="cartesian"></canvas>
+            <div id="show" class="hidden"><a class="show">#</a></div>
+            <div id="menu" class="hidden">
+                <div id="close"><a class="close">X</a></div>
+                <h1>Funciones</h1>
+                <ul>
+                    <li><a name="rect">Rectangular</a></li>
+                    <li><a name="identity">Identidad</a></li>
+                    <li><a name="parabolic">Parabolica</a></li>
+                    <li><a name="sin">Seno</a></li>
+                    <li><a name="cos">Coseno</a></li>
+                    <li><a name="tan">Tangente</a></li>
+                    <li><a name="log">Logaritmo</a></li>
+                    <li><a name="exp">Exponencial</a></li>
+                    <li><a name="circle">Circunferencia</a></li>
+                </ul>
+                <div class="clear"></div>
+                <h1>Fractales</h1>
+                <ul>
+                    <li><a name="mandelbrot">Mandelbrot (Z^2+C)</a></li>
+                    <li><a name="mandelbrot3">Mandelbrot (Z^3+C)</a></li>
+                    <li><a name="mandelbrot4">Mandelbrot (Z^4+C)</a></li>
+                    <li><a name="mandelbrot5">Mandelbrot (Z^5+C)</a></li>
+                    <li><a name="mandelbrot6">Mandelbrot (Z^6+C)</a></li>
+                    <li><a name="mandelbrot7">Mandelbrot (Z^7+C)</a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </section>
         <footer>
             <nav>
                 <ul>

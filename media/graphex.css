@@ -129,3 +129,11 @@ nav ul li *:hover {
 .clear {
     clear: both;
 }
+
+h1.label {
+    position:absolute;
+    top: 1.5em;
+    left: 1.0em;
+    color: #ffffff;
+    opacity: 0.25;
+}
