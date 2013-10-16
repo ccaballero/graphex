@@ -114,7 +114,7 @@ Function.mandelbrot6=function(i,j){
     while((iteration<this.max)&&((xx+yy)<4.0)){
         tx=x
         ty=y
-        y=(6*xxxxx*ty)-(20*xxxx*yy)+(6*tx*yyyyy)+j
+        y=(6*xxxxx*ty)-(20*xxx*yyy)+(6*tx*yyyyy)+j
         x=(xxxxxx)-(15*xxxx*yy)+(15*xx*yyyy)-(yyyyyy)+i
         yy=y*y;yyy=yy*y;yyyy=yyy*y;yyyyy=yyyy*y;yyyyyy=yyyyy*y
         xx=x*x;xxx=xx*x;xxxx=xxx*x;xxxxx=xxxx*x;xxxxxx=xxxxx*x
