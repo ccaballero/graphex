@@ -1,0 +1,88 @@
+Function.julia=function(i,j){
+    iteration=0
+    x=i;xx=x*x
+    y=j;yy=y*y
+    while((iteration<this.max)&&((xx+yy)<4.0)){
+        y=(2*x*y)+0.000
+        x=(xx-yy)+0.279
+        yy=y*y
+        xx=x*x
+        iteration++
+    }
+    return iteration
+}
+Function.julia3=function(i,j){
+    iteration=0
+    x=i;xx=x*x;xxx=xx*x
+    y=j;yy=y*y;yyy=yy*y
+    while((iteration<this.max)&&((xx+yy)<4.0)){
+        tx=x
+        ty=y
+        y=(3*xx*ty)-(yyy)+0.000
+        x=(xxx)-(3*yy*tx)+0.400
+        yy=y*y;yyy=yy*y
+        xx=x*x;xxx=xx*x
+        iteration++
+    }
+    return iteration
+}
+Function.julia4=function(i,j){
+    iteration=0
+    x=i;xx=x*x;xxx=xx*x;xxxx=xxx*x
+    y=j;yy=y*y;yyy=yy*y;yyyy=yyy*y
+    while((iteration<this.max)&&((xx+yy)<4.0)){
+        tx=x
+        ty=y
+        y=(4*xxx*ty)-(4*tx*yyy)+0.000
+        x=(xxxx)-(6*xx*yy)+(yyyy)+0.484
+        yy=y*y;yyy=yy*y;yyyy=yyy*y
+        xx=x*x;xxx=xx*x;xxxx=xxx*x
+        iteration++
+    }
+    return iteration
+}
+Function.julia5=function(i,j){
+    iteration=0
+    x=i;xx=x*x;xxx=xx*x;xxxx=xxx*x;xxxxx=xxxx*x
+    y=j;yy=y*y;yyy=yy*y;yyyy=yyy*y;yyyyy=yyyy*y
+    while((iteration<this.max)&&((xx+yy)<4.0)){
+        tx=x
+        ty=y
+        y=(5*xxxx*ty)-(10*xx*yyy)+(yyyyy)+0.000
+        x=(xxxxx)-(10*xxx*yy)+(5*tx*yyyy)+0.544
+        yy=y*y;yyy=yy*y;yyyy=yyy*y;yyyyy=yyyy*y
+        xx=x*x;xxx=xx*x;xxxx=xxx*x;xxxxx=xxxx*x
+        iteration++
+    }
+    return iteration
+}
+Function.julia6=function(i,j){
+    iteration=0
+    x=i;xx=x*x;xxx=xx*x;xxxx=xxx*x;xxxxx=xxxx*x;xxxxxx=xxxxx*x
+    y=j;yy=y*y;yyy=yy*y;yyyy=yyy*y;yyyyy=yyyy*y;yyyyyy=yyyyy*y
+    while((iteration<this.max)&&((xx+yy)<4.0)){
+        tx=x
+        ty=y
+        y=(6*xxxxx*ty)-(20*xxx*yyy)+(6*tx*yyyyy)+0.000
+        x=(xxxxxx)-(15*xxxx*yy)+(15*xx*yyyy)-(yyyyyy)+0.590
+        yy=y*y;yyy=yy*y;yyyy=yyy*y;yyyyy=yyyy*y;yyyyyy=yyyyy*y
+        xx=x*x;xxx=xx*x;xxxx=xxx*x;xxxxx=xxxx*x;xxxxxx=xxxxx*x
+        iteration++
+    }
+    return iteration
+}
+Function.julia7=function(i,j){
+    iteration=0
+    x=i;xx=x*x;xxx=xx*x;xxxx=xxx*x;xxxxx=xxxx*x;xxxxxx=xxxxx*x;xxxxxxx=xxxxxx*x
+    y=j;yy=y*y;yyy=yy*y;yyyy=yyy*y;yyyyy=yyyy*y;yyyyyy=yyyyy*y;yyyyyyy=yyyyyy*y
+    while((iteration<this.max)&&((xx+yy)<4.0)){
+        tx=x
+        ty=y
+        y=(7*xxxxxx*ty)-(35*xxxx*yyy)+(21*xx*yyyyy)-(yyyyyyy)+0.000
+        x=(xxxxxxx)-(21*xxxxx*yy)+(35*xxx*yyyy)-(7*tx*yyyyyy)+0.626
+        yy=y*y;yyy=yy*y;yyyy=yyy*y;yyyyy=yyyy*y;yyyyyy=yyyyy*y;yyyyyyy=yyyyyy*y
+        xx=x*x;xxx=xx*x;xxxx=xxx*x;xxxxx=xxxx*x;xxxxxx=xxxxx*x;xxxxxxx=xxxxxx*x
+        iteration++
+    }
+    return iteration
+}
