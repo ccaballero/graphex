@@ -35,7 +35,7 @@
             <h1 class="label"></h1>
             <canvas id="cartesian"></canvas>
             <div id="show" class="hidden"><a class="show">#</a></div>
-            <div id="menu" class="hidden">
+            <div id="menu" class="popup hidden">
                 <div id="close"><a class="close">X</a></div>
                 <h1>Funciones</h1>
                 <ul>
@@ -67,6 +67,56 @@
                 </ul>
                 <div class="clear"></div>
             </div>
+            <div id="help" class="popup hidden">
+                <div id="close"><a class="close">X</a></div>
+                <h1>Graficación de fractales</h1>
+                <p>Bienvenido a este graficador de fractales, talvez te
+                   preguntarás: ¿Que hace esta aplicación?. Bueno es muy simple
+                   en realidad; hay una lista de funciones, y otra de fractales
+                   ampliamente conocidos por los matematicos, el único objetivo
+                   de este programa es graficarlos, de modo que puedan
+                   apreciarse en todo su esplendor.</p>
+                <h2>Utilidades</h2>
+                <p>A parte de graficar fractales, tambien se han implementado
+                algunas funciones para navegar en la misma grafica:</p>
+                <ul>
+                    <li><strong>(top)</strong>Con esta función puedes ir al
+                        norte por el eje cartesiano Y. Si tienes un teclado
+                        tambien puedes utilizar la tecla "flecha arriba".</li>
+                    <li><strong>(bottom)</strong>Con esta función puedes ir al
+                        sur por el eje cartesiano Y. Si tienes un teclado
+                        tambien puedes utilizar la tecla "flecha abajo".</li>
+                    <li><strong>(left)</strong>Con esta función puedes ir al
+                        oeste por el eje cartesiano X. Si tienes un teclado
+                        tambien puedes utilizar la tecla "flecha izquierda".
+                        </li>
+                    <li><strong>(right)</strong>Con esta función puedes ir al
+                        este por el eje cartesiano X. Si tienes un teclado
+                        tambien puedes utilizar la tecla "flecha derecha".</li>
+                    <li><strong>(zoom+)</strong>Con esta función puedes
+                        acercarte a la grafica, es decir ampliar la escala de
+                        presentación. Si tienes un teclado tambien puedes
+                        utilizar la tecla "Página Arriba".</li>
+                    <li><strong>(zoom-)</strong>Con esta función puedes
+                        alejarte de la grafica, es decir reducir la escala de
+                        presentación. Si tienes un teclado tambien puedes
+                        utilizar la tecla "Página Abajo".</li>
+                    <li><strong>{hide}</strong>Con esta función puedes esconder
+                        los menus de la pantalla, y navegar por la grafica en
+                        modo reducido, para volver al modo normal, debes
+                        clickear el boton "#", ubicado en la parte inferior
+                        derecha de la pantalla.</li>
+                    <li><strong>{menu}</strong>Con esta función puedes desplegar
+                        las funciones, y los fractales disponibles para
+                        graficar.</li>
+                </ul>
+                <p>Si tienes dudas sobre que utilidad o como apreciar mejor los
+                   fractales, te sugiero que comiences con este enlace:
+                   <a href="https://es.wikipedia.org/wiki/Fractal">Fractales</a>
+                   </p>
+                <p>Espero que disfrutes del programa, y deseo que al menos haya
+                mejorado alguito tus conocimientos del idioma ingles ;-).</p>
+            </div>
         </section>
         <footer>
             <div class="background"></div>
@@ -74,6 +124,7 @@
                 <ul>
                     <li><a class="hide">{hide}</a></li>
                     <li><a class="menu">{menu}</a></li>
+                    <li><a class="help">{help}</a></li>
                     <li><a href="https://github.com/ccaballero/graphex"
                            target="_BLANK">{source}</a></li>
                 </ul>

@@ -148,16 +148,19 @@ $(document).ready(function(){
         return false
     })
     $('.menu').click(function(){
-        $('#menu').removeClass().addClass('visible')
+        $('#menu').removeClass('hidden').addClass('visible')
+    })
+    $('.help').click(function(){
+        $('#help').removeClass('hidden').addClass('visible')
     })
     $('.close').click(function(){
-        $('#menu').removeClass().addClass('hidden')
+        $(this).parent().parent().removeClass('visible').addClass('hidden')
     })
 
     $('#menu ul li a').click(function(){
         type=$(this).attr('name')
         Screen.fnct=type
-        $('#menu').removeClass().addClass('hidden')
+        $('#menu').removeClass('visible').addClass('hidden')
         Viewport.repaint()
     })
 

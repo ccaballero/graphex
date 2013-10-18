@@ -10,7 +10,7 @@ canvas {
 }
 
 a {
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 nav {
@@ -94,12 +94,12 @@ nav ul li a:hover {
     color: inherit;
 }
 
-#menu {
+.popup {
     position: absolute;
-    top: 20px;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
+    top: 2.0em;
+    bottom: 1.2em;
+    left: 1.0em;
+    right: 1.0em;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0px 0px 5px #ffffff;
@@ -107,22 +107,24 @@ nav ul li a:hover {
     overflow: auto;
 }
 
-#menu .close {
+.popup .close {
+    position: fixed;
+    right: 2.0em;
     display: block;
     text-align: right;
     font-size: 11px;
     padding-right: 10px;
 }
 
-#menu ul {
+.popup ul {
     list-style: none;
 }
 
-#menu ul li {
+.popup ul li {
     float: left;
 }
 
-#menu ul li a {
+.popup ul li a {
     float: left;
     font-family: Century Gothic, Apple Gothic, sans-serif;
     font-size: 11px;
@@ -132,14 +134,26 @@ nav ul li a:hover {
     color: #606060;
 }
 
-#menu ul li a:hover {
+.popup ul li a:hover {
     background-color: #e0e0e0;
 }
 
-#menu h1 {
-    font-size: 14px;
+.popup h1, .popup h2 {
     color: #ff6600;
     margin: 0.75em 0em;
+}
+
+.popup h1 { font-size: 14px; text-decoration: underline; }
+.popup h2 { font-size: 12px; }
+
+.popup p, .popup li {
+    padding-bottom: 0.8em;
+}
+
+.popup p, .popup * {
+    font-family: Futura Medium, Century Gothic, AppleGothic, sans-serif;
+    font-size: 11px;
+    line-height: 1.6em;
 }
 
 .clear {
