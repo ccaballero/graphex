@@ -1,0 +1,59 @@
+Graficación de fractales
+========================
+
+Descripción
+-----------
+El programa sirve para graficar funciones predefinidas, con función me refiero
+a una funcion algebraica de dos variables 'x' y 'y'.
+
+    y = f(x) = x; como caso fundamental.
+
+ademas puede tambien graficar ecuaciones de geometrica analitica, en las que
+la variable y, no necesita estar desplejada.
+
+Adicionalmente a las funciones de graficacion de funciones, tambien se tiene
+la capacidad de graficacion de funciones recursivas, es decir fractales.
+Particularmente se han programado las funciones para los conjuntos de Mandelbrot
+y de Julia. Estos son:
+
+    Z^2+C; donde Z y C son numeros complejos.
+    Z^3+C; donde Z y C son numeros complejos.
+    Z^4+C; donde Z y C son numeros complejos.
+    Z^5+C; donde Z y C son numeros complejos.
+    Z^6+C; donde Z y C son numeros complejos.
+    Z^7+C; donde Z y C son numeros complejos.
+
+Utilidades
+----------
+
+A parte de graficar fractales, tambien se han implementado
+algunas funciones para navegar en la misma grafica:
+
+    * **(top):** Con esta función puedes ir al
+      norte por el eje cartesiano Y. Si tienes un teclado
+      tambien puedes utilizar la tecla "flecha arriba".
+    * **(bottom):** Con esta función puedes ir al
+      sur por el eje cartesiano Y. Si tienes un teclado
+      tambien puedes utilizar la tecla "flecha abajo".
+    * **(left):** Con esta función puedes ir al
+      oeste por el eje cartesiano X. Si tienes un teclado
+      tambien puedes utilizar la tecla "flecha izquierda".
+    * **(right):** Con esta función puedes ir al
+      este por el eje cartesiano X. Si tienes un teclado
+      tambien puedes utilizar la tecla "flecha derecha".
+    * **(zoom+):** Con esta función puedes
+      acercarte a la grafica, es decir ampliar la escala de
+      presentación. Si tienes un teclado tambien puedes
+      utilizar la tecla "Página Arriba".
+    * **(zoom-):** Con esta función puedes
+      alejarte de la grafica, es decir reducir la escala de
+      presentación. Si tienes un teclado tambien puedes
+      utilizar la tecla "Página Abajo".
+    * **{hide}:** Con esta función puedes esconder
+      los menus de la pantalla, y navegar por la grafica en
+      modo reducido, para volver al modo normal, debes
+      clickear el boton "#", ubicado en la parte inferior
+      derecha de la pantalla.
+    * **{menu}:** Con esta función puedes desplegar
+      las funciones, y los fractales disponibles para
+      graficar.
