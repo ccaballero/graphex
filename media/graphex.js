@@ -32,6 +32,16 @@ var Viewport=new(function(){
     }
 })()
 
+var palette=[
+    [1,1,1],
+    [0,1,1],
+    [1,0,1],
+    [1,1,0],
+    [0,0,1],
+    [0,1,0],
+    [1,0,0],
+];
+
 var Screen=new(function(){
     this.canvas=null
     this.fnct='empty'
@@ -63,6 +73,7 @@ var Screen=new(function(){
         data=context.getImageData(0,0,width,height)
         pixels=data.data
         zoom=Viewport.zoom()
+        chromatic=32
         for(var y=0;y<height;y++){
             for(var x=0;x<width;x++){
                 // translation and scalation
@@ -73,9 +84,20 @@ var Screen=new(function(){
                 _y=_y*zoom
                 // renderization
                 value=Function[this.fnct](_x,_y)
-                _value=(value*255)/Function.max
+                if(value!=Function.max){
+                    _v1=Math.floor(value/chromatic)
+                    _v2=value%chromatic
+                }else{
+                    _v1=0
+                    _v2=value
+                }
+                _value=(_v2*255)/chromatic
+                
+                // set the pixel color
                 index=(y*width+x)*4
-                pixels[index]=pixels[index+1]=pixels[index+2]=_value
+                pixels[index]=palette[_v1][0]*_value
+                pixels[index+1]=palette[_v1][1]*_value
+                pixels[index+2]=palette[_v1][2]*_value
             }
         }
         context.putImageData(data,0,0)
@@ -102,7 +124,7 @@ $(window).resize(resize)
 $(document).ready(resize)
 $(document).ready(function(){
     Screen.render()
-    
+
     $('.top').click(function(){Viewport.up();Viewport.repaint()})
     $('.bottom').click(function(){Viewport.down();Viewport.repaint()})
     $('.right').click(function(){Viewport.right();Viewport.repaint()})
@@ -131,7 +153,7 @@ $(document).ready(function(){
     $('.close').click(function(){
         $('#menu').removeClass().addClass('hidden')
     })
-    
+
     $('#menu ul li a').click(function(){
         type=$(this).attr('name')
         Screen.fnct=type
